@@ -1,0 +1,1 @@
+<view class="content"><image class="logo" src="/static/logo.png"></image><view class="text-area"><text class="title">{{title}}</text><u--input vue-id="8dd740cc-1" placeholder="请输入内容" border="surround" clearable="{{true}}" bind:__l="__l"></u--input></view></view>
