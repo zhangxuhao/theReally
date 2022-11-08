@@ -1464,7 +1464,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"base","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_NAME":"base","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8556,7 +8556,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_NAME":"base","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_NAME":"base","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8577,14 +8577,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"base","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_NAME":"base","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"base","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_NAME":"base","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8670,7 +8670,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"base","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_NAME":"base","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -9084,9 +9084,9 @@ internalMixin(Vue);
 
 /***/ }),
 /* 5 */
-/*!*************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/pages.json ***!
-  \*************************************************/
+/*!******************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/pages.json ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9227,9 +9227,9 @@ function normalizeComponent (
 
 /***/ }),
 /* 12 */
-/*!*****************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/store/index.js ***!
-  \*****************************************************/
+/*!**********************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/store/index.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10523,9 +10523,9 @@ module.exports = index_cjs;
 
 /***/ }),
 /* 14 */
-/*!********************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/common/filters.js ***!
-  \********************************************************/
+/*!*************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/common/filters.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10698,9 +10698,9 @@ _vue.default.filter('bankCardHide', function (value) {
 
 /***/ }),
 /* 15 */
-/*!*******************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/common/config.js ***!
-  \*******************************************************/
+/*!************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/common/config.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -10726,9 +10726,9 @@ module.exports = {
 
 /***/ }),
 /* 16 */
-/*!******************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/common/utils.js ***!
-  \******************************************************/
+/*!***********************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/common/utils.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10987,9 +10987,9 @@ module.exports = {
 
 /***/ }),
 /* 17 */
-/*!********************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/index.js ***!
-  \********************************************************************/
+/*!*************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/index.js ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11076,9 +11076,9 @@ var install = function install(Vue) {
 
 /***/ }),
 /* 18 */
-/*!*******************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/mixin/mixin.js ***!
-  \*******************************************************************************/
+/*!************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/mixin/mixin.js ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11245,9 +11245,9 @@ var install = function install(Vue) {
 
 /***/ }),
 /* 19 */
-/*!*********************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/mixin/mpMixin.js ***!
-  \*********************************************************************************/
+/*!**************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/mixin/mpMixin.js ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11260,9 +11260,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 20 */
-/*!**************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/luch-request/index.js ***!
-  \**************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/luch-request/index.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11273,9 +11273,9 @@ _Request.default;exports.default = _default;
 
 /***/ }),
 /* 21 */
-/*!*********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/luch-request/core/Request.js ***!
-  \*********************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/luch-request/core/Request.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11481,9 +11481,9 @@ Request = /*#__PURE__*/function () {
 
 /***/ }),
 /* 22 */
-/*!*****************************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/luch-request/core/dispatchRequest.js ***!
-  \*****************************************************************************************************/
+/*!**********************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/luch-request/core/dispatchRequest.js ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11494,9 +11494,9 @@ function _default(config) {return (0, _index.default)(config);};exports.default 
 
 /***/ }),
 /* 23 */
-/*!***********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/luch-request/adapters/index.js ***!
-  \***********************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/luch-request/adapters/index.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11602,9 +11602,9 @@ function _default(config) {return new Promise(function (resolve, reject) {
 
 /***/ }),
 /* 24 */
-/*!*************************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/luch-request/helpers/buildURL.js ***!
-  \*************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/luch-request/helpers/buildURL.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11681,9 +11681,9 @@ function buildURL(url, params) {
 
 /***/ }),
 /* 25 */
-/*!**************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/luch-request/utils.js ***!
-  \**************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/luch-request/utils.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11822,9 +11822,9 @@ function isUndefined(val) {
 
 /***/ }),
 /* 26 */
-/*!***************************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/luch-request/core/buildFullPath.js ***!
-  \***************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/luch-request/core/buildFullPath.js ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11852,9 +11852,9 @@ function buildFullPath(baseURL, requestedURL) {
 
 /***/ }),
 /* 27 */
-/*!******************************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/luch-request/helpers/isAbsoluteURL.js ***!
-  \******************************************************************************************************/
+/*!***********************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/luch-request/helpers/isAbsoluteURL.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11876,9 +11876,9 @@ function isAbsoluteURL(url) {
 
 /***/ }),
 /* 28 */
-/*!****************************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/luch-request/helpers/combineURLs.js ***!
-  \****************************************************************************************************/
+/*!*********************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/luch-request/helpers/combineURLs.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11900,9 +11900,9 @@ function combineURLs(baseURL, relativeURL) {
 
 /***/ }),
 /* 29 */
-/*!********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/luch-request/core/settle.js ***!
-  \********************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/luch-request/core/settle.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11926,9 +11926,9 @@ function settle(resolve, reject, response) {var
 
 /***/ }),
 /* 30 */
-/*!********************************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/luch-request/core/InterceptorManager.js ***!
-  \********************************************************************************************************/
+/*!*************************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/luch-request/core/InterceptorManager.js ***!
+  \*************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11986,9 +11986,9 @@ InterceptorManager;exports.default = _default;
 
 /***/ }),
 /* 31 */
-/*!*************************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/luch-request/core/mergeConfig.js ***!
-  \*************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/luch-request/core/mergeConfig.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12099,9 +12099,9 @@ function _default(globalsConfig) {var config2 = arguments.length > 1 && argument
 
 /***/ }),
 /* 32 */
-/*!**********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/luch-request/core/defaults.js ***!
-  \**********************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/luch-request/core/defaults.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12137,9 +12137,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 33 */
-/*!********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/luch-request/utils/clone.js ***!
-  \********************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/luch-request/utils/clone.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14485,9 +14485,9 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 /* 38 */
-/*!******************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/util/route.js ***!
-  \******************************************************************************/
+/*!***********************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/util/route.js ***!
+  \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15408,9 +15408,9 @@ if (hadRuntime) {
 
 /***/ }),
 /* 42 */
-/*!******************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/function/colorGradient.js ***!
-  \******************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/function/colorGradient.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15551,9 +15551,9 @@ function colorToRgba(color, alpha) {
 
 /***/ }),
 /* 43 */
-/*!*********************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/function/test.js ***!
-  \*********************************************************************************/
+/*!**************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/function/test.js ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15848,9 +15848,9 @@ function regExp(o) {
 
 /***/ }),
 /* 44 */
-/*!*************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/function/debounce.js ***!
-  \*************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/function/debounce.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15887,9 +15887,9 @@ debounce;exports.default = _default;
 
 /***/ }),
 /* 45 */
-/*!*************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/function/throttle.js ***!
-  \*************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/function/throttle.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15927,9 +15927,9 @@ throttle;exports.default = _default;
 
 /***/ }),
 /* 46 */
-/*!**********************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/function/index.js ***!
-  \**********************************************************************************/
+/*!***************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/function/index.js ***!
+  \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16642,9 +16642,9 @@ function setConfig(_ref3)
 
 /***/ }),
 /* 47 */
-/*!**********************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/function/digit.js ***!
-  \**********************************************************************************/
+/*!***************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/function/digit.js ***!
+  \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16817,9 +16817,9 @@ function enableBoundaryChecking() {var flag = arguments.length > 0 && arguments[
 
 /***/ }),
 /* 48 */
-/*!*********************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/config.js ***!
-  \*********************************************************************************/
+/*!**************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/config.js ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16860,9 +16860,9 @@ var _default =
 
 /***/ }),
 /* 49 */
-/*!********************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props.js ***!
-  \********************************************************************************/
+/*!*************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props.js ***!
+  \*************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17059,9 +17059,9 @@ _upload.default);exports.default = _default;
 
 /***/ }),
 /* 50 */
-/*!********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/actionSheet.js ***!
-  \********************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/actionSheet.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17092,9 +17092,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 51 */
-/*!**************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/album.js ***!
-  \**************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/album.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17125,9 +17125,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 52 */
-/*!**************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/alert.js ***!
-  \**************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/alert.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17155,9 +17155,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 53 */
-/*!***************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/avatar.js ***!
-  \***************************************************************************************/
+/*!********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/avatar.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17191,9 +17191,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 54 */
-/*!********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/avatarGroup.js ***!
-  \********************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/avatarGroup.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17222,9 +17222,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 55 */
-/*!****************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/backtop.js ***!
-  \****************************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/backtop.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17256,9 +17256,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 56 */
-/*!**************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/badge.js ***!
-  \**************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/badge.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17291,9 +17291,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 57 */
-/*!***************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/button.js ***!
-  \***************************************************************************************/
+/*!********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/button.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17341,9 +17341,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 58 */
-/*!*****************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/calendar.js ***!
-  \*****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/calendar.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17391,9 +17391,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 59 */
-/*!********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/carKeyboard.js ***!
-  \********************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/carKeyboard.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17414,9 +17414,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 60 */
-/*!*************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/cell.js ***!
-  \*************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/cell.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17457,9 +17457,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 61 */
-/*!******************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/cellGroup.js ***!
-  \******************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/cellGroup.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17482,9 +17482,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 62 */
-/*!*****************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/checkbox.js ***!
-  \*****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/checkbox.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17517,9 +17517,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 63 */
-/*!**********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/checkboxGroup.js ***!
-  \**********************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/checkboxGroup.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17554,9 +17554,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 64 */
-/*!***********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/circleProgress.js ***!
-  \***********************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/circleProgress.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17577,9 +17577,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 65 */
-/*!*************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/code.js ***!
-  \*************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/code.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17606,9 +17606,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 66 */
-/*!******************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/codeInput.js ***!
-  \******************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/codeInput.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17642,9 +17642,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 67 */
-/*!************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/col.js ***!
-  \************************************************************************************/
+/*!*****************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/col.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17669,9 +17669,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 68 */
-/*!*****************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/collapse.js ***!
-  \*****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/collapse.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17694,9 +17694,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 69 */
-/*!*********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/collapseItem.js ***!
-  \*********************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/collapseItem.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17727,9 +17727,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 70 */
-/*!*********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/columnNotice.js ***!
-  \*********************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/columnNotice.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17759,9 +17759,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 71 */
-/*!******************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/countDown.js ***!
-  \******************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/countDown.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17785,9 +17785,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 72 */
-/*!****************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/countTo.js ***!
-  \****************************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/countTo.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17818,9 +17818,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 73 */
-/*!***********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/datetimePicker.js ***!
-  \***********************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/datetimePicker.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17862,9 +17862,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 74 */
-/*!****************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/divider.js ***!
-  \****************************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/divider.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17892,9 +17892,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 75 */
-/*!**************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/empty.js ***!
-  \**************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/empty.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17925,9 +17925,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 76 */
-/*!*************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/form.js ***!
-  \*************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/form.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17955,9 +17955,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 77 */
-/*!*****************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/formItem.js ***!
-  \*****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/formItem.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17985,9 +17985,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 78 */
-/*!************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/gap.js ***!
-  \************************************************************************************/
+/*!*****************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/gap.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18012,9 +18012,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 79 */
-/*!*************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/grid.js ***!
-  \*************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/grid.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18037,9 +18037,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 80 */
-/*!*****************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/gridItem.js ***!
-  \*****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/gridItem.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18061,9 +18061,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 81 */
-/*!*************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/icon.js ***!
-  \*************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/icon.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18105,9 +18105,9 @@ var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 48));f
 
 /***/ }),
 /* 82 */
-/*!**************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/image.js ***!
-  \**************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/image.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18143,9 +18143,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 83 */
-/*!********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/indexAnchor.js ***!
-  \********************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/indexAnchor.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18170,9 +18170,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 84 */
-/*!******************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/indexList.js ***!
-  \******************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/indexList.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18197,9 +18197,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 85 */
-/*!**************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/input.js ***!
-  \**************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/input.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18253,9 +18253,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 86 */
-/*!*****************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/keyboard.js ***!
-  \*****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/keyboard.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18291,9 +18291,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 87 */
-/*!*************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/line.js ***!
-  \*************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/line.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18319,9 +18319,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 88 */
-/*!*********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/lineProgress.js ***!
-  \*********************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/lineProgress.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18346,9 +18346,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 89 */
-/*!*************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/link.js ***!
-  \*************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/link.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18380,9 +18380,9 @@ var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 48));f
 
 /***/ }),
 /* 90 */
-/*!*************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/list.js ***!
-  \*************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/list.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18416,9 +18416,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 91 */
-/*!*****************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/listItem.js ***!
-  \*****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/listItem.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18439,9 +18439,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 92 */
-/*!********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/loadingIcon.js ***!
-  \********************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/loadingIcon.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18477,9 +18477,9 @@ var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 48));f
 
 /***/ }),
 /* 93 */
-/*!********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/loadingPage.js ***!
-  \********************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/loadingPage.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18507,9 +18507,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 94 */
-/*!*****************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/loadmore.js ***!
-  \*****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/loadmore.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18544,9 +18544,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 95 */
-/*!**************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/modal.js ***!
-  \**************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/modal.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18582,9 +18582,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 96 */
-/*!***************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/navbar.js ***!
-  \***************************************************************************************/
+/*!********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/navbar.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18621,9 +18621,9 @@ var _color = _interopRequireDefault(__webpack_require__(/*! ../color */ 97));fun
 
 /***/ }),
 /* 97 */
-/*!********************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/color.js ***!
-  \********************************************************************************/
+/*!*************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/color.js ***!
+  \*************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18648,9 +18648,9 @@ color;exports.default = _default;
 
 /***/ }),
 /* 98 */
-/*!******************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/noNetwork.js ***!
-  \******************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/noNetwork.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18673,9 +18673,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 99 */
-/*!******************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/noticeBar.js ***!
-  \******************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/noticeBar.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18708,9 +18708,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 100 */
-/*!***************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/notify.js ***!
-  \***************************************************************************************/
+/*!********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/notify.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18738,9 +18738,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 101 */
-/*!******************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/numberBox.js ***!
-  \******************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/numberBox.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18781,9 +18781,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 102 */
-/*!***********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/numberKeyboard.js ***!
-  \***********************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/numberKeyboard.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18806,9 +18806,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 103 */
-/*!****************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/overlay.js ***!
-  \****************************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/overlay.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18832,9 +18832,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 104 */
-/*!**************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/parse.js ***!
-  \**************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/parse.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18862,9 +18862,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 105 */
-/*!***************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/picker.js ***!
-  \***************************************************************************************/
+/*!********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/picker.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18900,9 +18900,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 106 */
-/*!**************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/popup.js ***!
-  \**************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/popup.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18937,9 +18937,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 107 */
-/*!**************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/radio.js ***!
-  \**************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/radio.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18972,9 +18972,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 108 */
-/*!*******************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/radioGroup.js ***!
-  \*******************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/radioGroup.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19010,9 +19010,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 109 */
-/*!*************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/rate.js ***!
-  \*************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/rate.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19044,9 +19044,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 110 */
-/*!*****************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/readMore.js ***!
-  \*****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/readMore.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19074,9 +19074,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 111 */
-/*!************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/row.js ***!
-  \************************************************************************************/
+/*!*****************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/row.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19099,9 +19099,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 112 */
-/*!******************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/rowNotice.js ***!
-  \******************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/rowNotice.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19128,9 +19128,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 113 */
-/*!*******************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/scrollList.js ***!
-  \*******************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/scrollList.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19156,9 +19156,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 114 */
-/*!***************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/search.js ***!
-  \***************************************************************************************/
+/*!********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/search.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19201,9 +19201,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 115 */
-/*!****************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/section.js ***!
-  \****************************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/section.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19233,9 +19233,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 116 */
-/*!*****************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/skeleton.js ***!
-  \*****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/skeleton.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19266,9 +19266,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 117 */
-/*!***************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/slider.js ***!
-  \***************************************************************************************/
+/*!********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/slider.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19299,9 +19299,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 118 */
-/*!******************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/statusBar.js ***!
-  \******************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/statusBar.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19322,9 +19322,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 119 */
-/*!**************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/steps.js ***!
-  \**************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/steps.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19351,9 +19351,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 120 */
-/*!******************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/stepsItem.js ***!
-  \******************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/stepsItem.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19377,9 +19377,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 121 */
-/*!***************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/sticky.js ***!
-  \***************************************************************************************/
+/*!********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/sticky.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19405,9 +19405,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 122 */
-/*!*******************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/subsection.js ***!
-  \*******************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/subsection.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19436,9 +19436,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 123 */
-/*!********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/swipeAction.js ***!
-  \********************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/swipeAction.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19459,9 +19459,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 124 */
-/*!************************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/swipeActionItem.js ***!
-  \************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/swipeActionItem.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19488,9 +19488,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 125 */
-/*!***************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/swiper.js ***!
-  \***************************************************************************************/
+/*!********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/swiper.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19534,9 +19534,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 126 */
-/*!*************************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/swipterIndicator.js ***!
-  \*************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/swipterIndicator.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19561,9 +19561,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 127 */
-/*!***************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/switch.js ***!
-  \***************************************************************************************/
+/*!********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/switch.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19593,9 +19593,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 128 */
-/*!***************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/tabbar.js ***!
-  \***************************************************************************************/
+/*!********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/tabbar.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19623,9 +19623,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 129 */
-/*!*******************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/tabbarItem.js ***!
-  \*******************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/tabbarItem.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19651,9 +19651,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 130 */
-/*!*************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/tabs.js ***!
-  \*************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/tabs.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19690,9 +19690,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 131 */
-/*!************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/tag.js ***!
-  \************************************************************************************/
+/*!*****************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/tag.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19727,9 +19727,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 132 */
-/*!*************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/text.js ***!
-  \*************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/text.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19772,9 +19772,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 133 */
-/*!*****************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/textarea.js ***!
-  \*****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/textarea.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19816,9 +19816,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 134 */
-/*!**************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/toast.js ***!
-  \**************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/toast.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19853,9 +19853,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 135 */
-/*!****************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/toolbar.js ***!
-  \****************************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/toolbar.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19881,9 +19881,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 136 */
-/*!****************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/tooltip.js ***!
-  \****************************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/tooltip.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19914,9 +19914,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 137 */
-/*!*******************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/transition.js ***!
-  \*******************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/transition.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19940,9 +19940,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 138 */
-/*!***************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/props/upload.js ***!
-  \***************************************************************************************/
+/*!********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/props/upload.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19984,9 +19984,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 139 */
-/*!*********************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/config/zIndex.js ***!
-  \*********************************************************************************/
+/*!**************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/config/zIndex.js ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20013,9 +20013,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 140 */
-/*!*************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/libs/function/platform.js ***!
-  \*************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/libs/function/platform.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20098,9 +20098,9 @@ platform;exports.default = _default;
 
 /***/ }),
 /* 141 */
-/*!****************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/common/uview.interface.js ***!
-  \****************************************************************/
+/*!*********************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/common/uview.interface.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20264,41 +20264,49 @@ function _reslog(res) {
 /* 146 */,
 /* 147 */,
 /* 148 */
-/*!**************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/api/user.js ***!
-  \**************************************************/
+/*!*******************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/api/home.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getUserInfo = getUserInfo;exports.userLogin = userLogin;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.uploadImage = uploadImage;
+var _uniInterface = _interopRequireDefault(__webpack_require__(/*! @/common/uni.interface.js */ 149));
+var _index = __webpack_require__(/*! @/utils/index.js */ 150);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //如果用uni请求
 
-var _uniInterface = _interopRequireDefault(__webpack_require__(/*! @/common/uni.interface.js */ 149));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //如果用uni请求
+
 
 //如果是用uview请求,就用下面这句
 //const http = uni.$u.http
 
 
 //获取用户信息
-function getUserInfo(params) {
-  return _uniInterface.default.get('api/userinfo', params);
-}
+function uploadImage(url) {
+  return new Promise(function (resolve, reject) {
+    uni.uploadFile({
+      url: _index.urls.uploadImage, // 仅为示例，非真实的接口地址
+      filePath: url,
+      name: 'file',
+      formData: {
+        user: 'test' },
 
-//用户登录
-function userLogin(params) {
-  return _uniInterface.default.post('api/login', params);
-}
+      success: function success(res) {
+        setTimeout(function () {
+          resolve(res.data.data);
+        }, 1000);
+      },
+      fail: reject });
 
-//更改配置项，阻止loading提示
-// export function getUserInfo(params){
-// 	return http.post('api/login', {custom:{ShowLoading:false}})
-// }
+  });
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 /* 149 */
-/*!**************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/common/uni.interface.js ***!
-  \**************************************************************/
+/*!*******************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/common/uni.interface.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20456,7 +20464,19 @@ function _reslog(res) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 150 */,
+/* 150 */
+/*!**********************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/utils/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.urls = void 0;
+var urls = {
+  uploadImage: "https://www.uviewui.com/components/upload.html" };exports.urls = urls;
+
+/***/ }),
 /* 151 */,
 /* 152 */,
 /* 153 */,
@@ -20465,199 +20485,329 @@ function _reslog(res) {
 /* 156 */,
 /* 157 */,
 /* 158 */,
-/* 159 */
-/*!***************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/components/u-input/props.js ***!
-  \***************************************************************************************/
+/* 159 */,
+/* 160 */
+/*!*********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-upload/utils.js ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.chooseFile = chooseFile;function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function pickExclude(obj, keys) {
+  // 某些情况下，type可能会为
+  if (!['[object Object]', '[object File]'].includes(Object.prototype.toString.call(obj))) {
+    return {};
+  }
+  return Object.keys(obj).reduce(function (prev, key) {
+    if (!keys.includes(key)) {
+      prev[key] = obj[key];
+    }
+    return prev;
+  }, {});
+}
+
+function formatImage(res) {
+  return res.tempFiles.map(function (item) {return _objectSpread(_objectSpread({},
+    pickExclude(item, ['path'])), {}, {
+      type: 'image',
+      url: item.path,
+      thumb: item.path,
+      size: item.size });});
+
+
+
+
+}
+
+function formatVideo(res) {
+  return [_objectSpread(_objectSpread({},
+
+  pickExclude(res, ['tempFilePath', 'thumbTempFilePath', 'errMsg'])), {}, {
+    type: 'video',
+    url: res.tempFilePath,
+    thumb: res.thumbTempFilePath,
+    size: res.size })];
+
+
+
+
+
+}
+
+function formatMedia(res) {
+  return res.tempFiles.map(function (item) {return _objectSpread(_objectSpread({},
+    pickExclude(item, ['fileType', 'thumbTempFilePath', 'tempFilePath'])), {}, {
+      type: res.type,
+      url: item.tempFilePath,
+      thumb: res.type === 'video' ? item.thumbTempFilePath : item.tempFilePath,
+      size: item.size });});
+
+}
+
+function formatFile(res) {
+  return res.tempFiles.map(function (item) {return _objectSpread(_objectSpread({},
+    pickExclude(item, ['path'])), {}, {
+      url: item.path,
+      size: item.size });});
+
+
+
+
+
+}
+function chooseFile(_ref)
+
+
+
+
+
+
+
+
+{var accept = _ref.accept,multiple = _ref.multiple,capture = _ref.capture,compressed = _ref.compressed,maxDuration = _ref.maxDuration,sizeType = _ref.sizeType,camera = _ref.camera,maxCount = _ref.maxCount;
+  return new Promise(function (resolve, reject) {
+    switch (accept) {
+      case 'image':
+        uni.chooseImage({
+          count: multiple ? Math.min(maxCount, 9) : 1,
+          sourceType: capture,
+          sizeType: sizeType,
+          success: function success(res) {return resolve(formatImage(res));},
+          fail: reject });
+
+        break;
+
+      // 只有微信小程序才支持chooseMedia接口
+      case 'media':
+        wx.chooseMedia({
+          count: multiple ? Math.min(maxCount, 9) : 1,
+          sourceType: capture,
+          maxDuration: maxDuration,
+          sizeType: sizeType,
+          camera: camera,
+          success: function success(res) {return resolve(formatMedia(res));},
+          fail: reject });
+
+        break;
+
+      case 'video':
+        uni.chooseVideo({
+          sourceType: capture,
+          compressed: compressed,
+          maxDuration: maxDuration,
+          camera: camera,
+          success: function success(res) {return resolve(formatVideo(res));},
+          fail: reject });
+
+        break;
+
+      // 只有微信小程序才支持chooseMessageFile接口
+      case 'file':
+
+        wx.chooseMessageFile({
+          count: multiple ? maxCount : 1,
+          type: accept,
+          success: function success(res) {return resolve(formatFile(res));},
+          fail: reject });
+
+
+
+
+
+
+
+
+
+
+
+        break;
+
+      default:
+        // 此为保底选项，在accept不为上面任意一项的时候选取全部文件
+
+        wx.chooseMessageFile({
+          count: multiple ? maxCount : 1,
+          type: 'all',
+          success: function success(res) {return resolve(formatFile(res));},
+          fail: reject });}
+
+
+
+
+
+
+
+
+
+
+
+
+  });
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 161 */
+/*!*********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-upload/mixin.js ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  watch: {
+    // 监听accept的变化，判断是否符合个平台要求
+    // 只有微信小程序才支持选择媒体，文件类型，所以这里做一个判断提示
+    accept: {
+      immediate: true,
+      handler: function handler(val) {
+
+
+
+
+
+
+
+
+
+
+      } } } };exports.default = _default;
+
+/***/ }),
+/* 162 */
+/*!*********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-upload/props.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
   props: {
-    // 输入的值
-    value: {
-      type: [String, Number],
-      default: uni.$u.props.input.value },
-
-    // 输入框类型
-    // number-数字输入键盘，app-vue下可以输入浮点数，app-nvue和小程序平台下只能输入整数
-    // idcard-身份证输入键盘，微信、支付宝、百度、QQ小程序
-    // digit-带小数点的数字键盘，App的nvue页面、微信、支付宝、百度、头条、QQ小程序
-    // text-文本输入键盘
-    type: {
+    // 接受的文件类型, 可选值为all media image file video
+    accept: {
       type: String,
-      default: uni.$u.props.input.type },
+      default: uni.$u.props.upload.accept },
 
-    // 如果 textarea 是在一个 position:fixed 的区域，需要显示指定属性 fixed 为 true，
-    // 兼容性：微信小程序、百度小程序、字节跳动小程序、QQ小程序
-    fixed: {
+    // 	图片或视频拾取模式，当accept为image类型时设置capture可选额外camera可以直接调起摄像头
+    capture: {
+      type: [String, Array],
+      default: uni.$u.props.upload.capture },
+
+    // 当accept为video时生效，是否压缩视频，默认为true
+    compressed: {
       type: Boolean,
-      default: uni.$u.props.input.fixed },
+      default: uni.$u.props.upload.compressed },
 
-    // 是否禁用输入框
+    // 当accept为video时生效，可选值为back或front
+    camera: {
+      type: String,
+      default: uni.$u.props.upload.camera },
+
+    // 当accept为video时生效，拍摄视频最长拍摄时间，单位秒
+    maxDuration: {
+      type: Number,
+      default: uni.$u.props.upload.maxDuration },
+
+    // 上传区域的图标，只能内置图标
+    uploadIcon: {
+      type: String,
+      default: uni.$u.props.upload.uploadIcon },
+
+    // 上传区域的图标的颜色，默认
+    uploadIconColor: {
+      type: String,
+      default: uni.$u.props.upload.uploadIconColor },
+
+    // 是否开启文件读取前事件
+    useBeforeRead: {
+      type: Boolean,
+      default: uni.$u.props.upload.useBeforeRead },
+
+    // 读取后的处理函数
+    afterRead: {
+      type: Function,
+      default: null },
+
+    // 读取前的处理函数
+    beforeRead: {
+      type: Function,
+      default: null },
+
+    // 是否显示组件自带的图片预览功能
+    previewFullImage: {
+      type: Boolean,
+      default: uni.$u.props.upload.previewFullImage },
+
+    // 最大上传数量
+    maxCount: {
+      type: [String, Number],
+      default: uni.$u.props.upload.maxCount },
+
+    // 是否启用
     disabled: {
       type: Boolean,
-      default: uni.$u.props.input.disabled },
+      default: uni.$u.props.upload.disabled },
 
-    // 禁用状态时的背景色
-    disabledColor: {
+    // 预览上传的图片时的裁剪模式，和image组件mode属性一致
+    imageMode: {
       type: String,
-      default: uni.$u.props.input.disabledColor },
+      default: uni.$u.props.upload.imageMode },
 
-    // 是否显示清除控件
-    clearable: {
+    // 标识符，可以在回调函数的第二项参数中获取
+    name: {
+      type: String,
+      default: uni.$u.props.upload.name },
+
+    // 所选的图片的尺寸, 可选值为original compressed
+    sizeType: {
+      type: Array,
+      default: uni.$u.props.upload.sizeType },
+
+    // 是否开启图片多选，部分安卓机型不支持
+    multiple: {
       type: Boolean,
-      default: uni.$u.props.input.clearable },
+      default: uni.$u.props.upload.multiple },
 
-    // 是否密码类型
-    password: {
+    // 是否展示删除按钮
+    deletable: {
       type: Boolean,
-      default: uni.$u.props.input.password },
+      default: uni.$u.props.upload.deletable },
 
-    // 最大输入长度，设置为 -1 的时候不限制最大长度
-    maxlength: {
+    // 文件大小限制，单位为byte
+    maxSize: {
       type: [String, Number],
-      default: uni.$u.props.input.maxlength },
+      default: uni.$u.props.upload.maxSize },
 
-    // 	输入框为空时的占位符
-    placeholder: {
+    // 显示已上传的文件列表
+    fileList: {
+      type: Array,
+      default: uni.$u.props.upload.fileList },
+
+    // 上传区域的提示文字
+    uploadText: {
       type: String,
-      default: uni.$u.props.input.placeholder },
+      default: uni.$u.props.upload.uploadText },
 
-    // 指定placeholder的样式类，注意页面或组件的style中写了scoped时，需要在类名前写/deep/
-    placeholderClass: {
-      type: String,
-      default: uni.$u.props.input.placeholderClass },
-
-    // 指定placeholder的样式
-    placeholderStyle: {
-      type: [String, Object],
-      default: uni.$u.props.input.placeholderStyle },
-
-    // 是否显示输入字数统计，只在 type ="text"或type ="textarea"时有效
-    showWordLimit: {
-      type: Boolean,
-      default: uni.$u.props.input.showWordLimit },
-
-    // 设置右下角按钮的文字，有效值：send|search|next|go|done，兼容性详见uni-app文档
-    // https://uniapp.dcloud.io/component/input
-    // https://uniapp.dcloud.io/component/textarea
-    confirmType: {
-      type: String,
-      default: uni.$u.props.input.confirmType },
-
-    // 点击键盘右下角按钮时是否保持键盘不收起，H5无效
-    confirmHold: {
-      type: Boolean,
-      default: uni.$u.props.input.confirmHold },
-
-    // focus时，点击页面的时候不收起键盘，微信小程序有效
-    holdKeyboard: {
-      type: Boolean,
-      default: uni.$u.props.input.holdKeyboard },
-
-    // 自动获取焦点
-    // 在 H5 平台能否聚焦以及软键盘是否跟随弹出，取决于当前浏览器本身的实现。nvue 页面不支持，需使用组件的 focus()、blur() 方法控制焦点
-    focus: {
-      type: Boolean,
-      default: uni.$u.props.input.focus },
-
-    // 键盘收起时，是否自动失去焦点，目前仅App3.0.0+有效
-    autoBlur: {
-      type: Boolean,
-      default: uni.$u.props.input.autoBlur },
-
-    // 是否去掉 iOS 下的默认内边距，仅微信小程序，且type=textarea时有效
-    disableDefaultPadding: {
-      type: Boolean,
-      default: uni.$u.props.input.disableDefaultPadding },
-
-    // 指定focus时光标的位置
-    cursor: {
+    // 内部预览图片区域和选择图片按钮的区域宽度
+    width: {
       type: [String, Number],
-      default: uni.$u.props.input.cursor },
+      default: uni.$u.props.upload.width },
 
-    // 输入框聚焦时底部与键盘的距离
-    cursorSpacing: {
+    // 内部预览图片区域和选择图片按钮的区域高度
+    height: {
       type: [String, Number],
-      default: uni.$u.props.input.cursorSpacing },
+      default: uni.$u.props.upload.height },
 
-    // 光标起始位置，自动聚集时有效，需与selection-end搭配使用
-    selectionStart: {
-      type: [String, Number],
-      default: uni.$u.props.input.selectionStart },
-
-    // 光标结束位置，自动聚集时有效，需与selection-start搭配使用
-    selectionEnd: {
-      type: [String, Number],
-      default: uni.$u.props.input.selectionEnd },
-
-    // 键盘弹起时，是否自动上推页面
-    adjustPosition: {
+    // 是否在上传完成后展示预览图
+    previewImage: {
       type: Boolean,
-      default: uni.$u.props.input.adjustPosition },
-
-    // 输入框内容对齐方式，可选值为：left|center|right
-    inputAlign: {
-      type: String,
-      default: uni.$u.props.input.inputAlign },
-
-    // 输入框字体的大小
-    fontSize: {
-      type: [String, Number],
-      default: uni.$u.props.input.fontSize },
-
-    // 输入框字体颜色
-    color: {
-      type: String,
-      default: uni.$u.props.input.color },
-
-    // 输入框前置图标
-    prefixIcon: {
-      type: String,
-      default: uni.$u.props.input.prefixIcon },
-
-    // 前置图标样式，对象或字符串
-    prefixIconStyle: {
-      type: [String, Object],
-      default: uni.$u.props.input.prefixIconStyle },
-
-    // 输入框后置图标
-    suffixIcon: {
-      type: String,
-      default: uni.$u.props.input.suffixIcon },
-
-    // 后置图标样式，对象或字符串
-    suffixIconStyle: {
-      type: [String, Object],
-      default: uni.$u.props.input.suffixIconStyle },
-
-    // 边框类型，surround-四周边框，bottom-底部边框，none-无边框
-    border: {
-      type: String,
-      default: uni.$u.props.input.border },
-
-    // 是否只读，与disabled不同之处在于disabled会置灰组件，而readonly则不会
-    readonly: {
-      type: Boolean,
-      default: uni.$u.props.input.readonly },
-
-    // 输入框形状，circle-圆形，square-方形
-    shape: {
-      type: String,
-      default: uni.$u.props.input.shape },
-
-    // 用于处理或者过滤输入框内容的方法
-    formatter: {
-      type: [Function, null],
-      default: uni.$u.props.input.formatter } } };exports.default = _default;
+      default: uni.$u.props.upload.previewImage } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 160 */,
-/* 161 */,
-/* 162 */,
 /* 163 */,
 /* 164 */,
 /* 165 */,
@@ -20665,12 +20815,118 @@ function _reslog(res) {
 /* 167 */,
 /* 168 */,
 /* 169 */,
-/* 170 */,
+/* 170 */
+/*!***********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-collapse/props.js ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  props: {
+    // 当前展开面板的name，非手风琴模式：[<string | number>]，手风琴模式：string | number
+    value: {
+      type: [String, Number, Array, null],
+      default: uni.$u.props.collapse.value },
+
+    // 是否手风琴模式
+    accordion: {
+      type: Boolean,
+      default: uni.$u.props.collapse.accordion },
+
+    // 是否显示外边框
+    border: {
+      type: Boolean,
+      default: uni.$u.props.collapse.border } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
 /* 171 */,
-/* 172 */
-/*!**************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/components/u-icon/icons.js ***!
-  \**************************************************************************************/
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */
+/*!****************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-collapse-item/props.js ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  props: {
+    // 标题
+    title: {
+      type: String,
+      default: uni.$u.props.collapseItem.title },
+
+    // 标题右侧内容
+    value: {
+      type: String,
+      default: uni.$u.props.collapseItem.value },
+
+    // 标题下方的描述信息
+    label: {
+      type: String,
+      default: uni.$u.props.collapseItem.label },
+
+    // 是否禁用折叠面板
+    disabled: {
+      type: Boolean,
+      default: uni.$u.props.collapseItem.disabled },
+
+    // 是否展示右侧箭头并开启点击反馈
+    isLink: {
+      type: Boolean,
+      default: uni.$u.props.collapseItem.isLink },
+
+    // 是否开启点击反馈
+    clickable: {
+      type: Boolean,
+      default: uni.$u.props.collapseItem.clickable },
+
+    // 是否显示内边框
+    border: {
+      type: Boolean,
+      default: uni.$u.props.collapseItem.border },
+
+    // 标题的对齐方式
+    align: {
+      type: String,
+      default: uni.$u.props.collapseItem.align },
+
+    // 唯一标识符
+    name: {
+      type: [String, Number],
+      default: uni.$u.props.collapseItem.name },
+
+    // 标题左侧图片，可为绝对路径的图片或内置图标
+    icon: {
+      type: String,
+      default: uni.$u.props.collapseItem.icon },
+
+    // 面板展开收起的过渡时间，单位ms
+    duration: {
+      type: Number,
+      default: uni.$u.props.collapseItem.duration } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-icon/icons.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20890,10 +21146,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   'uicon-en': "\uE692" };exports.default = _default;
 
 /***/ }),
-/* 173 */
-/*!**************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/base/uni_modules/uview-ui/components/u-icon/props.js ***!
-  \**************************************************************************************/
+/* 187 */
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-icon/props.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20984,6 +21240,253 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     stop: {
       type: Boolean,
       default: uni.$u.props.icon.stop } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */
+/*!***************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-loading-icon/props.js ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  props: {
+    // 是否显示组件
+    show: {
+      type: Boolean,
+      default: uni.$u.props.loadingIcon.show },
+
+    // 颜色
+    color: {
+      type: String,
+      default: uni.$u.props.loadingIcon.color },
+
+    // 提示文字颜色
+    textColor: {
+      type: String,
+      default: uni.$u.props.loadingIcon.textColor },
+
+    // 文字和图标是否垂直排列
+    vertical: {
+      type: Boolean,
+      default: uni.$u.props.loadingIcon.vertical },
+
+    // 模式选择，circle-圆形，spinner-花朵形，semicircle-半圆形
+    mode: {
+      type: String,
+      default: uni.$u.props.loadingIcon.mode },
+
+    // 图标大小，单位默认px
+    size: {
+      type: [String, Number],
+      default: uni.$u.props.loadingIcon.size },
+
+    // 文字大小
+    textSize: {
+      type: [String, Number],
+      default: uni.$u.props.loadingIcon.textSize },
+
+    // 文字内容
+    text: {
+      type: [String, Number],
+      default: uni.$u.props.loadingIcon.text },
+
+    // 动画模式
+    timingFunction: {
+      type: String,
+      default: uni.$u.props.loadingIcon.timingFunction },
+
+    // 动画执行周期时间
+    duration: {
+      type: [String, Number],
+      default: uni.$u.props.loadingIcon.duration },
+
+    // mode=circle时的暗边颜色
+    inactiveColor: {
+      type: String,
+      default: uni.$u.props.loadingIcon.inactiveColor } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-line/props.js ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  props: {
+    color: {
+      type: String,
+      default: uni.$u.props.line.color },
+
+    // 长度，竖向时表现为高度，横向时表现为长度，可以为百分比，带px单位的值等
+    length: {
+      type: [String, Number],
+      default: uni.$u.props.line.length },
+
+    // 线条方向，col-竖向，row-横向
+    direction: {
+      type: String,
+      default: uni.$u.props.line.direction },
+
+    // 是否显示细边框
+    hairline: {
+      type: Boolean,
+      default: uni.$u.props.line.hairline },
+
+    // 线条与上下左右元素的间距，字符串形式，如"30px"、"20px 30px"
+    margin: {
+      type: [String, Number],
+      default: uni.$u.props.line.margin },
+
+    // 是否虚线，true-实线，false-虚线
+    dashed: {
+      type: Boolean,
+      default: uni.$u.props.line.dashed } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-cell/props.js ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default2 = {
+  props: {
+    // 标题
+    title: {
+      type: [String, Number],
+      default: uni.$u.props.cell.title },
+
+    // 标题下方的描述信息
+    label: {
+      type: [String, Number],
+      default: uni.$u.props.cell.label },
+
+    // 右侧的内容
+    value: {
+      type: [String, Number],
+      default: uni.$u.props.cell.value },
+
+    // 左侧图标名称，或者图片链接(本地文件建议使用绝对地址)
+    icon: {
+      type: String,
+      default: uni.$u.props.cell.icon },
+
+    // 是否禁用cell
+    disabled: {
+      type: Boolean,
+      default: uni.$u.props.cell.disabled },
+
+    // 是否显示下边框
+    border: {
+      type: Boolean,
+      default: uni.$u.props.cell.border },
+
+    // 内容是否垂直居中(主要是针对右侧的value部分)
+    center: {
+      type: Boolean,
+      default: uni.$u.props.cell.center },
+
+    // 点击后跳转的URL地址
+    url: {
+      type: String,
+      default: uni.$u.props.cell.url },
+
+    // 链接跳转的方式，内部使用的是uView封装的route方法，可能会进行拦截操作
+    linkType: {
+      type: String,
+      default: uni.$u.props.cell.linkType },
+
+    // 是否开启点击反馈(表现为点击时加上灰色背景)
+    clickable: {
+      type: Boolean,
+      default: uni.$u.props.cell.clickable },
+
+    // 是否展示右侧箭头并开启点击反馈
+    isLink: {
+      type: Boolean,
+      default: uni.$u.props.cell.isLink },
+
+    // 是否显示表单状态下的必填星号(此组件可能会内嵌入input组件)
+    required: {
+      type: Boolean,
+      default: uni.$u.props.cell.required },
+
+    // 右侧的图标箭头
+    rightIcon: {
+      type: String,
+      default: uni.$u.props.cell.rightIcon },
+
+    // 右侧箭头的方向，可选值为：left，up，down
+    arrowDirection: {
+      type: String,
+      default: uni.$u.props.cell.arrowDirection },
+
+    // 左侧图标样式
+    iconStyle: {
+      type: [Object, String],
+      default: function _default() {
+        return uni.$u.props.cell.iconStyle;
+      } },
+
+    // 右侧箭头图标的样式
+    rightIconStyle: {
+      type: [Object, String],
+      default: function _default() {
+        return uni.$u.props.cell.rightIconStyle;
+      } },
+
+    // 标题的样式
+    titleStyle: {
+      type: [Object, String],
+      default: function _default() {
+        return uni.$u.props.cell.titleStyle;
+      } },
+
+    // 单位元的大小，可选值为large
+    size: {
+      type: String,
+      default: uni.$u.props.cell.size },
+
+    // 点击cell是否阻止事件传播
+    stop: {
+      type: Boolean,
+      default: uni.$u.props.cell.stop },
+
+    // 标识符，cell被点击时返回
+    name: {
+      type: [Number, String],
+      default: uni.$u.props.cell.name } } };exports.default = _default2;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
