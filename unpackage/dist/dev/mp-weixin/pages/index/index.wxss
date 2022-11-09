@@ -11,8 +11,8 @@
 	font-size: 44rpx !important;
 	top: 20rpx !important;
 }
-.u-upload__wrap{
-	display: block!important;
+.u-upload__wrap {
+	display: block !important;
 }
 
 @charset "UTF-8";
@@ -61,6 +61,7 @@
   display: block;
 }
 .content {
+  min-height: 100vh;
   padding: 24rpx;
   width: 750rpx;
   box-sizing: border-box;

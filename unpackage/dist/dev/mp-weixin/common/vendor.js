@@ -14547,7 +14547,7 @@ Router = /*#__PURE__*/function () {
                   mergeConfig.url = this.mixinParam(options, params);
                   mergeConfig.type = 'navigateTo';
                 } else {
-                  mergeConfig = uni.$u.deepClone(options, this.config);
+                  mergeConfig = uni.$u.deepMerge(options, this.config);
                   // 否则正常使用mergeConfig中的url和params进行拼接
                   mergeConfig.url = this.mixinParam(options.url, options.params);
                 }
@@ -15569,7 +15569,7 @@ function email(value) {
    * 验证手机格式
    */
 function mobile(value) {
-  return /^1[23456789]\d{9}$/.test(value);
+  return /^1([3589]\d|4[5-9]|6[1-2,4-7]|7[0-8])\d{8}$/.test(value);
 }
 
 /**
@@ -15792,9 +15792,9 @@ function promise(value) {
    * @param {Object} value
    */
 function image(value) {
-  // 由于有很多图片链接并不是.jpg等结尾，而是带有很多get参数，故不能采用判断扩展名的形式，只能简单的判断是否为http开头
-  var IMAGE_REGEXP = /^http/i;
-  return IMAGE_REGEXP.test(value);
+  var newValue = value.split('?')[0];
+  var IMAGE_REGEXP = /\.(jpeg|jpg|gif|png|svg|webp|jfif|bmp|dpg)/i;
+  return IMAGE_REGEXP.test(newValue);
 }
 
 /**
@@ -15802,7 +15802,7 @@ function image(value) {
    * @param {Object} value
    */
 function video(value) {
-  var VIDEO_REGEXP = /\.(mp4|mpg|mpeg|dat|asf|avi|rm|rmvb|mov|wmv|flv|mkv)/i;
+  var VIDEO_REGEXP = /\.(mp4|mpg|mpeg|dat|asf|avi|rm|rmvb|mov|wmv|flv|mkv|m3u8)/i;
   return VIDEO_REGEXP.test(value);
 }
 
@@ -16228,15 +16228,15 @@ function timeFormat() {var dateTime = arguments.length > 0 && arguments[0] !== u
     else if (typeof dateTime === 'string' && /^\d+$/.test(dateTime.trim())) {
         date = new Date(Number(dateTime));
       }
-      // 其他都认为符合 RFC 2822 规范
-      else {
-          // 处理平台性差异，在Safari/Webkit中，new Date仅支持/作为分割符的字符串时间
-          date = new Date(
-          typeof dateTime === 'string' ?
-          dateTime.replace(/-/g, '/') :
-          dateTime);
-
+      // 处理平台性差异，在Safari/Webkit中，new Date仅支持/作为分割符的字符串时间
+      // 处理 '2022-07-10 01:02:03'，跳过 '2022-07-10T01:02:03'
+      else if (typeof dateTime === 'string' && dateTime.includes('-') && !dateTime.includes('T')) {
+          date = new Date(dateTime.replace(/-/g, '/'));
         }
+        // 其他都认为符合 RFC 2822 规范
+        else {
+            date = new Date(dateTime);
+          }
 
   var timeSource = {
     'y': date.getFullYear().toString(), // 年
@@ -16824,14 +16824,14 @@ function enableBoundaryChecking() {var flag = arguments.length > 0 && arguments[
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; // 此版本发布于2022-03-13
-var version = '2.0.29';
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; // 此版本发布于2022-00-24
+var version = '2.0.34';
 
 // 开发环境才提示，生产环境不会提示
-//if (process.env.NODE_ENV === 'development') {
-//	console.log(`\n %c uView V${version} %c https://www.uviewui.com/ \n\n`, 'color: #ffffff; background: #3c9cff; padding:5px 0;', 'color: #3c9cff;background: #ffffff; padding:5px 0;');
-//}
-var _default =
+if (true) {
+  console.log("\n %c uView V".concat(version, " %c https://uviewui.com/ \n\n"), 'color: #ffffff; background: #3c9cff; padding:5px 0; border-radius: 5px;');
+}var _default =
+
 {
   v: version,
   version: version,
@@ -17502,7 +17502,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   // checkbox组件
   checkbox: {
     name: '',
-    shape: 'square',
+    shape: '',
     size: '',
     checkbox: false,
     disabled: '',
@@ -17625,6 +17625,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 {
   // codeInput 组件
   codeInput: {
+    adjustPosition: true,
     maxlength: 6,
     dot: false,
     mode: 'box',
@@ -17977,6 +17978,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     label: '',
     prop: '',
     borderBottom: '',
+    labelPosition: '',
     labelWidth: '',
     rightIcon: '',
     leftIcon: '',
@@ -18503,6 +18505,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     bgColor: '#ffffff',
     color: '#C8C8C8',
     fontSize: 19,
+    iconSize: 28,
     loadingColor: '#C8C8C8' } };exports.default = _default;
 
 /***/ }),
@@ -18530,6 +18533,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     bgColor: 'transparent',
     icon: true,
     fontSize: 14,
+    iconSize: 17,
     color: '#606266',
     loadingIcon: 'spinner',
     loadmoreText: '加载更多',
@@ -18540,7 +18544,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     marginTop: 10,
     marginBottom: 10,
     height: 'auto',
-    line: false } };exports.default = _default;
+    line: false,
+    lineColor: '#E6E8EB',
+    dashed: false } };exports.default = _default;
 
 /***/ }),
 /* 95 */
@@ -18891,7 +18897,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     confirmText: '确定',
     cancelColor: '#909193',
     confirmColor: '#3c9cff',
-    singleIndex: 0,
     visibleItemCount: 5,
     keyName: 'text',
     closeOnClickOverlay: false,
@@ -19681,6 +19686,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
     lineWidth: 20,
     lineHeight: 3,
+    lineBgSize: 'cover',
     itemStyle: function itemStyle() {return {
         height: '44px' };},
 
@@ -20487,324 +20493,281 @@ var urls = {
 /* 158 */,
 /* 159 */,
 /* 160 */
-/*!*********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-upload/utils.js ***!
-  \*********************************************************************************************/
+/*!***********************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/lime-clipper/components/l-clipper/images/rotate.svg ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.chooseFile = chooseFile;function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function pickExclude(obj, keys) {
-  // 某些情况下，type可能会为
-  if (!['[object Object]', '[object File]'].includes(Object.prototype.toString.call(obj))) {
-    return {};
-  }
-  return Object.keys(obj).reduce(function (prev, key) {
-    if (!keys.includes(key)) {
-      prev[key] = obj[key];
-    }
-    return prev;
-  }, {});
-}
-
-function formatImage(res) {
-  return res.tempFiles.map(function (item) {return _objectSpread(_objectSpread({},
-    pickExclude(item, ['path'])), {}, {
-      type: 'image',
-      url: item.path,
-      thumb: item.path,
-      size: item.size });});
-
-
-
-
-}
-
-function formatVideo(res) {
-  return [_objectSpread(_objectSpread({},
-
-  pickExclude(res, ['tempFilePath', 'thumbTempFilePath', 'errMsg'])), {}, {
-    type: 'video',
-    url: res.tempFilePath,
-    thumb: res.thumbTempFilePath,
-    size: res.size })];
-
-
-
-
-
-}
-
-function formatMedia(res) {
-  return res.tempFiles.map(function (item) {return _objectSpread(_objectSpread({},
-    pickExclude(item, ['fileType', 'thumbTempFilePath', 'tempFilePath'])), {}, {
-      type: res.type,
-      url: item.tempFilePath,
-      thumb: res.type === 'video' ? item.thumbTempFilePath : item.tempFilePath,
-      size: item.size });});
-
-}
-
-function formatFile(res) {
-  return res.tempFiles.map(function (item) {return _objectSpread(_objectSpread({},
-    pickExclude(item, ['path'])), {}, {
-      url: item.path,
-      size: item.size });});
-
-
-
-
-
-}
-function chooseFile(_ref)
-
-
-
-
-
-
-
-
-{var accept = _ref.accept,multiple = _ref.multiple,capture = _ref.capture,compressed = _ref.compressed,maxDuration = _ref.maxDuration,sizeType = _ref.sizeType,camera = _ref.camera,maxCount = _ref.maxCount;
-  return new Promise(function (resolve, reject) {
-    switch (accept) {
-      case 'image':
-        uni.chooseImage({
-          count: multiple ? Math.min(maxCount, 9) : 1,
-          sourceType: capture,
-          sizeType: sizeType,
-          success: function success(res) {return resolve(formatImage(res));},
-          fail: reject });
-
-        break;
-
-      // 只有微信小程序才支持chooseMedia接口
-      case 'media':
-        wx.chooseMedia({
-          count: multiple ? Math.min(maxCount, 9) : 1,
-          sourceType: capture,
-          maxDuration: maxDuration,
-          sizeType: sizeType,
-          camera: camera,
-          success: function success(res) {return resolve(formatMedia(res));},
-          fail: reject });
-
-        break;
-
-      case 'video':
-        uni.chooseVideo({
-          sourceType: capture,
-          compressed: compressed,
-          maxDuration: maxDuration,
-          camera: camera,
-          success: function success(res) {return resolve(formatVideo(res));},
-          fail: reject });
-
-        break;
-
-      // 只有微信小程序才支持chooseMessageFile接口
-      case 'file':
-
-        wx.chooseMessageFile({
-          count: multiple ? maxCount : 1,
-          type: accept,
-          success: function success(res) {return resolve(formatFile(res));},
-          fail: reject });
-
-
-
-
-
-
-
-
-
-
-
-        break;
-
-      default:
-        // 此为保底选项，在accept不为上面任意一项的时候选取全部文件
-
-        wx.chooseMessageFile({
-          count: multiple ? maxCount : 1,
-          type: 'all',
-          success: function success(res) {return resolve(formatFile(res));},
-          fail: reject });}
-
-
-
-
-
-
-
-
-
-
-
-
-  });
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+module.exports = __webpack_require__.p + "static/img/rotate.c2113aba.svg";
 
 /***/ }),
 /* 161 */
-/*!*********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-upload/mixin.js ***!
-  \*********************************************************************************************/
+/*!**********************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/lime-clipper/components/l-clipper/images/photo.svg ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  watch: {
-    // 监听accept的变化，判断是否符合个平台要求
-    // 只有微信小程序才支持选择媒体，文件类型，所以这里做一个判断提示
-    accept: {
-      immediate: true,
-      handler: function handler(val) {
-
-
-
-
-
-
-
-
-
-
-      } } } };exports.default = _default;
+module.exports = __webpack_require__.p + "static/img/photo.ac4fb10d.svg";
 
 /***/ }),
 /* 162 */
-/*!*********************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-upload/props.js ***!
-  \*********************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/lime-clipper/components/l-clipper/utils.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  props: {
-    // 接受的文件类型, 可选值为all media image file video
-    accept: {
-      type: String,
-      default: uni.$u.props.upload.accept },
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.determineDirection = determineDirection;exports.calcImageOffset = calcImageOffset;exports.calcImageScale = calcImageScale;exports.calcImageSize = calcImageSize;exports.calcPythagoreanTheorem = calcPythagoreanTheorem;exports.clipTouchMoveOfCalculate = clipTouchMoveOfCalculate;exports.imageTouchMoveOfCalcOffset = imageTouchMoveOfCalcOffset; /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                         * 判断手指触摸位置
+                                                                                                                                                                                                                                                                                                                                                                                                                                         */
+function determineDirection(clipX, clipY, clipWidth, clipHeight, currentX, currentY) {
+  /*
+                                                                                       * (右下>>1 右上>>2 左上>>3 左下>>4)
+                                                                                       */
+  var corner;
+  /**
+               * 思路：（利用直角坐标系）
+               *  1.找出裁剪框中心点
+               *  2.如点击坐标在上方点与左方点区域内，则点击为左上角
+               *  3.如点击坐标在下方点与右方点区域内，则点击为右下角
+               *  4.其他角同理
+               */
+  var mainPoint = [clipX + clipWidth / 2, clipY + clipHeight / 2]; // 中心点
+  var currentPoint = [currentX, currentY]; // 触摸点
 
-    // 	图片或视频拾取模式，当accept为image类型时设置capture可选额外camera可以直接调起摄像头
-    capture: {
-      type: [String, Array],
-      default: uni.$u.props.upload.capture },
+  if (currentPoint[0] <= mainPoint[0] && currentPoint[1] <= mainPoint[1]) {
+    corner = 3; // 左上
+  } else if (currentPoint[0] >= mainPoint[0] && currentPoint[1] <= mainPoint[1]) {
+    corner = 2; // 右上
+  } else if (currentPoint[0] <= mainPoint[0] && currentPoint[1] >= mainPoint[1]) {
+    corner = 4; // 左下
+  } else if (currentPoint[0] >= mainPoint[0] && currentPoint[1] >= mainPoint[1]) {
+    corner = 1; // 右下
+  }
 
-    // 当accept为video时生效，是否压缩视频，默认为true
-    compressed: {
-      type: Boolean,
-      default: uni.$u.props.upload.compressed },
+  return corner;
+}
 
-    // 当accept为video时生效，可选值为back或front
-    camera: {
-      type: String,
-      default: uni.$u.props.upload.camera },
+/**
+   * 图片边缘检测检测时，计算图片偏移量
+   */
+function calcImageOffset(data, scale) {
+  var left = data.imageLeft;
+  var top = data.imageTop;
+  scale = scale || data.scale;
 
-    // 当accept为video时生效，拍摄视频最长拍摄时间，单位秒
-    maxDuration: {
-      type: Number,
-      default: uni.$u.props.upload.maxDuration },
+  var imageWidth = data.imageWidth;
+  var imageHeight = data.imageHeight;
+  if (data.angle / 90 % 2) {
+    imageWidth = data.imageHeight;
+    imageHeight = data.imageWidth;
+  }var
 
-    // 上传区域的图标，只能内置图标
-    uploadIcon: {
-      type: String,
-      default: uni.$u.props.upload.uploadIcon },
+  clipX =
 
-    // 上传区域的图标的颜色，默认
-    uploadIconColor: {
-      type: String,
-      default: uni.$u.props.upload.uploadIconColor },
 
-    // 是否开启文件读取前事件
-    useBeforeRead: {
-      type: Boolean,
-      default: uni.$u.props.upload.useBeforeRead },
 
-    // 读取后的处理函数
-    afterRead: {
-      type: Function,
-      default: null },
+  data.clipX,clipWidth = data.clipWidth,clipY = data.clipY,clipHeight = data.clipHeight;
 
-    // 读取前的处理函数
-    beforeRead: {
-      type: Function,
-      default: null },
+  // 当前图片宽度/高度
+  var currentImageSize = function currentImageSize(size) {return size * scale / 2;};
+  var currentImageWidth = currentImageSize(imageWidth);
+  var currentImageHeight = currentImageSize(imageHeight);
 
-    // 是否显示组件自带的图片预览功能
-    previewFullImage: {
-      type: Boolean,
-      default: uni.$u.props.upload.previewFullImage },
+  left = clipX + currentImageWidth >= left ? left : clipX + currentImageWidth;
+  left = clipX + clipWidth - currentImageWidth <= left ? left : clipX + clipWidth - currentImageWidth;
+  top = clipY + currentImageHeight >= top ? top : clipY + currentImageHeight;
+  top = clipY + clipHeight - currentImageHeight <= top ? top : clipY + clipHeight - currentImageHeight;
+  return {
+    left: left,
+    top: top,
+    scale: scale };
 
-    // 最大上传数量
-    maxCount: {
-      type: [String, Number],
-      default: uni.$u.props.upload.maxCount },
+}
 
-    // 是否启用
-    disabled: {
-      type: Boolean,
-      default: uni.$u.props.upload.disabled },
+/**
+   * 图片边缘检测时，计算图片缩放比例
+   */
+function calcImageScale(data, scale) {
+  scale = scale || data.scale;var
 
-    // 预览上传的图片时的裁剪模式，和image组件mode属性一致
-    imageMode: {
-      type: String,
-      default: uni.$u.props.upload.imageMode },
+  imageWidth =
 
-    // 标识符，可以在回调函数的第二项参数中获取
-    name: {
-      type: String,
-      default: uni.$u.props.upload.name },
 
-    // 所选的图片的尺寸, 可选值为original compressed
-    sizeType: {
-      type: Array,
-      default: uni.$u.props.upload.sizeType },
 
-    // 是否开启图片多选，部分安卓机型不支持
-    multiple: {
-      type: Boolean,
-      default: uni.$u.props.upload.multiple },
 
-    // 是否展示删除按钮
-    deletable: {
-      type: Boolean,
-      default: uni.$u.props.upload.deletable },
+  data.imageWidth,imageHeight = data.imageHeight,clipWidth = data.clipWidth,clipHeight = data.clipHeight,angle = data.angle;
+  if (angle / 90 % 2) {
+    imageWidth = imageHeight;
+    imageHeight = imageWidth;
+  }
+  if (imageWidth * scale < clipWidth) {
+    scale = clipWidth / imageWidth;
+  }
+  if (imageHeight * scale < clipHeight) {
+    scale = Math.max(scale, clipHeight / imageHeight);
+  }
+  return scale;
+}
 
-    // 文件大小限制，单位为byte
-    maxSize: {
-      type: [String, Number],
-      default: uni.$u.props.upload.maxSize },
+/**
+   * 计算图片尺寸
+   */
+function calcImageSize(width, height, data) {
+  var imageWidth = width,
+  imageHeight = height;var
 
-    // 显示已上传的文件列表
-    fileList: {
-      type: Array,
-      default: uni.$u.props.upload.fileList },
+  clipWidth =
 
-    // 上传区域的提示文字
-    uploadText: {
-      type: String,
-      default: uni.$u.props.upload.uploadText },
 
-    // 内部预览图片区域和选择图片按钮的区域宽度
-    width: {
-      type: [String, Number],
-      default: uni.$u.props.upload.width },
 
-    // 内部预览图片区域和选择图片按钮的区域高度
-    height: {
-      type: [String, Number],
-      default: uni.$u.props.upload.height },
 
-    // 是否在上传完成后展示预览图
-    previewImage: {
-      type: Boolean,
-      default: uni.$u.props.upload.previewImage } } };exports.default = _default;
+  data.clipWidth,clipHeight = data.clipHeight,sysinfo = data.sysinfo,originWidth = data.width,originHeight = data.height;
+  var cw = clipWidth || originWidth;
+  var ch = clipHeight || originHeight;
+  if (imageWidth && imageHeight) {
+    if (imageWidth / imageHeight > cw / ch) {
+      imageHeight = clipHeight || originHeight;
+      imageWidth = width / height * imageHeight;
+    } else {
+      imageWidth = cw;
+      imageHeight = height / width * imageWidth;
+    }
+  } else {
+    var sys = sysinfo || uni.getSystemInfoSync();
+    imageWidth = sys.windowWidth;
+    imageHeight = 0;
+  }
+  return {
+    imageWidth: imageWidth,
+    imageHeight: imageHeight };
+
+}
+
+/**
+   * 勾股定理求斜边
+   */
+function calcPythagoreanTheorem(width, height) {
+  return Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
+}
+
+/**
+   * 拖动裁剪框时计算
+   */
+function clipTouchMoveOfCalculate(data, event) {
+  var clientX = event.touches[0].clientX;
+  var clientY = event.touches[0].clientY;var
+
+
+  clipWidth =
+
+
+
+
+
+
+
+
+
+  data.clipWidth,clipHeight = data.clipHeight,oldClipY = data.clipY,oldClipX = data.clipX,clipStart = data.clipStart,isLockRatio = data.isLockRatio,maxWidth = data.maxWidth,minWidth = data.minWidth,maxHeight = data.maxHeight,minHeight = data.minHeight;
+  maxWidth = uni.upx2px(maxWidth); // maxWidth / 2;
+  minWidth = uni.upx2px(minWidth); // minWidth / 2;
+  minHeight = uni.upx2px(minHeight); // minHeight / 2;
+  maxHeight = uni.upx2px(maxHeight); // maxHeight / 2;
+
+  var width = clipWidth,
+  height = clipHeight,
+  clipY = oldClipY,
+  clipX = oldClipX,
+  // 获取裁剪框实际宽度/高度
+  // 如果大于最大值则使用最大值
+  // 如果小于最小值则使用最小值
+  sizecorrect = function sizecorrect() {
+    width = width <= maxWidth ? width >= minWidth ? width : minWidth : maxWidth;
+    height = height <= maxHeight ? height >= minHeight ? height : minHeight : maxHeight;
+  },
+  sizeinspect = function sizeinspect() {
+
+    if ((width > maxWidth || width < minWidth || height > maxHeight || height < minHeight) && isLockRatio) {
+      sizecorrect();
+      return false;
+    } else {
+      sizecorrect();
+      return true;
+    }
+  };
+  //if (clipStart.corner) {
+  height = clipStart.height + (clipStart.corner > 1 && clipStart.corner < 4 ? 1 : -1) * (clipStart.y - clientY);
+  //}
+  switch (clipStart.corner) {
+    case 1:
+      width = clipStart.width - clipStart.x + clientX;
+      if (isLockRatio) {
+        height = width / (clipWidth / clipHeight);
+      }
+      if (!sizeinspect()) return;
+      break;
+    case 2:
+      width = clipStart.width - clipStart.x + clientX;
+      if (isLockRatio) {
+        height = width / (clipWidth / clipHeight);
+      }
+      if (!sizeinspect()) {
+        return;
+      } else {
+        clipY = clipStart.clipY - (height - clipStart.height);
+      }
+
+      break;
+    case 3:
+      width = clipStart.width + clipStart.x - clientX;
+      if (isLockRatio) {
+        height = width / (clipWidth / clipHeight);
+      }
+      if (!sizeinspect()) {
+        return;
+      } else {
+        clipY = clipStart.clipY - (height - clipStart.height);
+        clipX = clipStart.clipX - (width - clipStart.width);
+      }
+
+      break;
+    case 4:
+      width = clipStart.width + clipStart.x - clientX;
+      if (isLockRatio) {
+        height = width / (clipWidth / clipHeight);
+      }
+      if (!sizeinspect()) {
+        return;
+      } else {
+        clipX = clipStart.clipX - (width - clipStart.width);
+      }
+      break;
+    default:
+      break;}
+
+  return {
+    width: width,
+    height: height,
+    clipX: clipX,
+    clipY: clipY };
+
+}
+
+/**
+   * 单指拖动图片计算偏移
+   */
+function imageTouchMoveOfCalcOffset(data, clientXForLeft, clientYForLeft) {
+  var left = clientXForLeft - data.touchRelative[0].x,
+  top = clientYForLeft - data.touchRelative[0].y;
+  return {
+    left: left,
+    top: top };
+
+}
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
@@ -20924,6 +20887,179 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* 184 */,
 /* 185 */,
 /* 186 */
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-line/props.js ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  props: {
+    color: {
+      type: String,
+      default: uni.$u.props.line.color },
+
+    // 长度，竖向时表现为高度，横向时表现为长度，可以为百分比，带px单位的值等
+    length: {
+      type: [String, Number],
+      default: uni.$u.props.line.length },
+
+    // 线条方向，col-竖向，row-横向
+    direction: {
+      type: String,
+      default: uni.$u.props.line.direction },
+
+    // 是否显示细边框
+    hairline: {
+      type: Boolean,
+      default: uni.$u.props.line.hairline },
+
+    // 线条与上下左右元素的间距，字符串形式，如"30px"、"20px 30px"
+    margin: {
+      type: [String, Number],
+      default: uni.$u.props.line.margin },
+
+    // 是否虚线，true-虚线，false-实线
+    dashed: {
+      type: Boolean,
+      default: uni.$u.props.line.dashed } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */
+/*!*******************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-cell/props.js ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default2 = {
+  props: {
+    // 标题
+    title: {
+      type: [String, Number],
+      default: uni.$u.props.cell.title },
+
+    // 标题下方的描述信息
+    label: {
+      type: [String, Number],
+      default: uni.$u.props.cell.label },
+
+    // 右侧的内容
+    value: {
+      type: [String, Number],
+      default: uni.$u.props.cell.value },
+
+    // 左侧图标名称，或者图片链接(本地文件建议使用绝对地址)
+    icon: {
+      type: String,
+      default: uni.$u.props.cell.icon },
+
+    // 是否禁用cell
+    disabled: {
+      type: Boolean,
+      default: uni.$u.props.cell.disabled },
+
+    // 是否显示下边框
+    border: {
+      type: Boolean,
+      default: uni.$u.props.cell.border },
+
+    // 内容是否垂直居中(主要是针对右侧的value部分)
+    center: {
+      type: Boolean,
+      default: uni.$u.props.cell.center },
+
+    // 点击后跳转的URL地址
+    url: {
+      type: String,
+      default: uni.$u.props.cell.url },
+
+    // 链接跳转的方式，内部使用的是uView封装的route方法，可能会进行拦截操作
+    linkType: {
+      type: String,
+      default: uni.$u.props.cell.linkType },
+
+    // 是否开启点击反馈(表现为点击时加上灰色背景)
+    clickable: {
+      type: Boolean,
+      default: uni.$u.props.cell.clickable },
+
+    // 是否展示右侧箭头并开启点击反馈
+    isLink: {
+      type: Boolean,
+      default: uni.$u.props.cell.isLink },
+
+    // 是否显示表单状态下的必填星号(此组件可能会内嵌入input组件)
+    required: {
+      type: Boolean,
+      default: uni.$u.props.cell.required },
+
+    // 右侧的图标箭头
+    rightIcon: {
+      type: String,
+      default: uni.$u.props.cell.rightIcon },
+
+    // 右侧箭头的方向，可选值为：left，up，down
+    arrowDirection: {
+      type: String,
+      default: uni.$u.props.cell.arrowDirection },
+
+    // 左侧图标样式
+    iconStyle: {
+      type: [Object, String],
+      default: function _default() {
+        return uni.$u.props.cell.iconStyle;
+      } },
+
+    // 右侧箭头图标的样式
+    rightIconStyle: {
+      type: [Object, String],
+      default: function _default() {
+        return uni.$u.props.cell.rightIconStyle;
+      } },
+
+    // 标题的样式
+    titleStyle: {
+      type: [Object, String],
+      default: function _default() {
+        return uni.$u.props.cell.titleStyle;
+      } },
+
+    // 单位元的大小，可选值为large
+    size: {
+      type: String,
+      default: uni.$u.props.cell.size },
+
+    // 点击cell是否阻止事件传播
+    stop: {
+      type: Boolean,
+      default: uni.$u.props.cell.stop },
+
+    // 标识符，cell被点击时返回
+    name: {
+      type: [Number, String],
+      default: uni.$u.props.cell.name } } };exports.default = _default2;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */
 /*!*******************************************************************************************!*\
   !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-icon/icons.js ***!
   \*******************************************************************************************/
@@ -21146,7 +21282,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   'uicon-en': "\uE692" };exports.default = _default;
 
 /***/ }),
-/* 187 */
+/* 203 */
 /*!*******************************************************************************************!*\
   !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-icon/props.js ***!
   \*******************************************************************************************/
@@ -21243,14 +21379,350 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 188 */,
-/* 189 */,
-/* 190 */,
-/* 191 */,
-/* 192 */,
-/* 193 */,
-/* 194 */,
-/* 195 */
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */
+/*!*********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-upload/utils.js ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.chooseFile = chooseFile;function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function pickExclude(obj, keys) {
+  // 某些情况下，type可能会为
+  if (!['[object Object]', '[object File]'].includes(Object.prototype.toString.call(obj))) {
+    return {};
+  }
+  return Object.keys(obj).reduce(function (prev, key) {
+    if (!keys.includes(key)) {
+      prev[key] = obj[key];
+    }
+    return prev;
+  }, {});
+}
+
+function formatImage(res) {
+  return res.tempFiles.map(function (item) {return _objectSpread(_objectSpread({},
+    pickExclude(item, ['path'])), {}, {
+      type: 'image',
+      url: item.path,
+      thumb: item.path,
+      size: item.size });});
+
+
+
+
+}
+
+function formatVideo(res) {
+  return [_objectSpread(_objectSpread({},
+
+  pickExclude(res, ['tempFilePath', 'thumbTempFilePath', 'errMsg'])), {}, {
+    type: 'video',
+    url: res.tempFilePath,
+    thumb: res.thumbTempFilePath,
+    size: res.size })];
+
+
+
+
+
+}
+
+function formatMedia(res) {
+  return res.tempFiles.map(function (item) {return _objectSpread(_objectSpread({},
+    pickExclude(item, ['fileType', 'thumbTempFilePath', 'tempFilePath'])), {}, {
+      type: res.type,
+      url: item.tempFilePath,
+      thumb: res.type === 'video' ? item.thumbTempFilePath : item.tempFilePath,
+      size: item.size });});
+
+}
+
+function formatFile(res) {
+  return res.tempFiles.map(function (item) {return _objectSpread(_objectSpread({},
+    pickExclude(item, ['path'])), {}, {
+      url: item.path,
+      size: item.size });});
+
+
+
+
+
+}
+function chooseFile(_ref)
+
+
+
+
+
+
+
+
+{var accept = _ref.accept,multiple = _ref.multiple,capture = _ref.capture,compressed = _ref.compressed,maxDuration = _ref.maxDuration,sizeType = _ref.sizeType,camera = _ref.camera,maxCount = _ref.maxCount;
+  return new Promise(function (resolve, reject) {
+    switch (accept) {
+      case 'image':
+        uni.chooseImage({
+          count: multiple ? Math.min(maxCount, 9) : 1,
+          sourceType: capture,
+          sizeType: sizeType,
+          success: function success(res) {return resolve(formatImage(res));},
+          fail: reject });
+
+        break;
+
+      // 只有微信小程序才支持chooseMedia接口
+      case 'media':
+        wx.chooseMedia({
+          count: multiple ? Math.min(maxCount, 9) : 1,
+          sourceType: capture,
+          maxDuration: maxDuration,
+          sizeType: sizeType,
+          camera: camera,
+          success: function success(res) {return resolve(formatMedia(res));},
+          fail: reject });
+
+        break;
+
+      case 'video':
+        uni.chooseVideo({
+          sourceType: capture,
+          compressed: compressed,
+          maxDuration: maxDuration,
+          camera: camera,
+          success: function success(res) {return resolve(formatVideo(res));},
+          fail: reject });
+
+        break;
+
+      // 只有微信小程序才支持chooseMessageFile接口
+      case 'file':
+
+        wx.chooseMessageFile({
+          count: multiple ? maxCount : 1,
+          type: accept,
+          success: function success(res) {return resolve(formatFile(res));},
+          fail: reject });
+
+
+
+
+
+
+
+
+
+
+
+        break;
+
+      default:
+        // 此为保底选项，在accept不为上面任意一项的时候选取全部文件
+
+        wx.chooseMessageFile({
+          count: multiple ? maxCount : 1,
+          type: 'all',
+          success: function success(res) {return resolve(formatFile(res));},
+          fail: reject });}
+
+
+
+
+
+
+
+
+
+
+
+
+  });
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 215 */
+/*!*********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-upload/mixin.js ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  watch: {
+    // 监听accept的变化，判断是否符合个平台要求
+    // 只有微信小程序才支持选择媒体，文件类型，所以这里做一个判断提示
+    accept: {
+      immediate: true,
+      handler: function handler(val) {
+
+
+
+
+
+
+
+
+
+
+      } } } };exports.default = _default;
+
+/***/ }),
+/* 216 */
+/*!*********************************************************************************************!*\
+  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-upload/props.js ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  props: {
+    // 接受的文件类型, 可选值为all media image file video
+    accept: {
+      type: String,
+      default: uni.$u.props.upload.accept },
+
+    // 	图片或视频拾取模式，当accept为image类型时设置capture可选额外camera可以直接调起摄像头
+    capture: {
+      type: [String, Array],
+      default: uni.$u.props.upload.capture },
+
+    // 当accept为video时生效，是否压缩视频，默认为true
+    compressed: {
+      type: Boolean,
+      default: uni.$u.props.upload.compressed },
+
+    // 当accept为video时生效，可选值为back或front
+    camera: {
+      type: String,
+      default: uni.$u.props.upload.camera },
+
+    // 当accept为video时生效，拍摄视频最长拍摄时间，单位秒
+    maxDuration: {
+      type: Number,
+      default: uni.$u.props.upload.maxDuration },
+
+    // 上传区域的图标，只能内置图标
+    uploadIcon: {
+      type: String,
+      default: uni.$u.props.upload.uploadIcon },
+
+    // 上传区域的图标的颜色，默认
+    uploadIconColor: {
+      type: String,
+      default: uni.$u.props.upload.uploadIconColor },
+
+    // 是否开启文件读取前事件
+    useBeforeRead: {
+      type: Boolean,
+      default: uni.$u.props.upload.useBeforeRead },
+
+    // 读取后的处理函数
+    afterRead: {
+      type: Function,
+      default: null },
+
+    // 读取前的处理函数
+    beforeRead: {
+      type: Function,
+      default: null },
+
+    // 是否显示组件自带的图片预览功能
+    previewFullImage: {
+      type: Boolean,
+      default: uni.$u.props.upload.previewFullImage },
+
+    // 最大上传数量
+    maxCount: {
+      type: [String, Number],
+      default: uni.$u.props.upload.maxCount },
+
+    // 是否启用
+    disabled: {
+      type: Boolean,
+      default: uni.$u.props.upload.disabled },
+
+    // 预览上传的图片时的裁剪模式，和image组件mode属性一致
+    imageMode: {
+      type: String,
+      default: uni.$u.props.upload.imageMode },
+
+    // 标识符，可以在回调函数的第二项参数中获取
+    name: {
+      type: String,
+      default: uni.$u.props.upload.name },
+
+    // 所选的图片的尺寸, 可选值为original compressed
+    sizeType: {
+      type: Array,
+      default: uni.$u.props.upload.sizeType },
+
+    // 是否开启图片多选，部分安卓机型不支持
+    multiple: {
+      type: Boolean,
+      default: uni.$u.props.upload.multiple },
+
+    // 是否展示删除按钮
+    deletable: {
+      type: Boolean,
+      default: uni.$u.props.upload.deletable },
+
+    // 文件大小限制，单位为byte
+    maxSize: {
+      type: [String, Number],
+      default: uni.$u.props.upload.maxSize },
+
+    // 显示已上传的文件列表
+    fileList: {
+      type: Array,
+      default: uni.$u.props.upload.fileList },
+
+    // 上传区域的提示文字
+    uploadText: {
+      type: String,
+      default: uni.$u.props.upload.uploadText },
+
+    // 内部预览图片区域和选择图片按钮的区域宽度
+    width: {
+      type: [String, Number],
+      default: uni.$u.props.upload.width },
+
+    // 内部预览图片区域和选择图片按钮的区域高度
+    height: {
+      type: [String, Number],
+      default: uni.$u.props.upload.height },
+
+    // 是否在上传完成后展示预览图
+    previewImage: {
+      type: Boolean,
+      default: uni.$u.props.upload.previewImage } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */
 /*!***************************************************************************************************!*\
   !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-loading-icon/props.js ***!
   \***************************************************************************************************/
@@ -21314,179 +21786,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     inactiveColor: {
       type: String,
       default: uni.$u.props.loadingIcon.inactiveColor } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
-/* 196 */,
-/* 197 */,
-/* 198 */,
-/* 199 */,
-/* 200 */,
-/* 201 */,
-/* 202 */,
-/* 203 */
-/*!*******************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-line/props.js ***!
-  \*******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  props: {
-    color: {
-      type: String,
-      default: uni.$u.props.line.color },
-
-    // 长度，竖向时表现为高度，横向时表现为长度，可以为百分比，带px单位的值等
-    length: {
-      type: [String, Number],
-      default: uni.$u.props.line.length },
-
-    // 线条方向，col-竖向，row-横向
-    direction: {
-      type: String,
-      default: uni.$u.props.line.direction },
-
-    // 是否显示细边框
-    hairline: {
-      type: Boolean,
-      default: uni.$u.props.line.hairline },
-
-    // 线条与上下左右元素的间距，字符串形式，如"30px"、"20px 30px"
-    margin: {
-      type: [String, Number],
-      default: uni.$u.props.line.margin },
-
-    // 是否虚线，true-实线，false-虚线
-    dashed: {
-      type: Boolean,
-      default: uni.$u.props.line.dashed } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
-/* 204 */,
-/* 205 */,
-/* 206 */,
-/* 207 */,
-/* 208 */,
-/* 209 */,
-/* 210 */,
-/* 211 */
-/*!*******************************************************************************************!*\
-  !*** G:/myProject/识别狠活小程序/code/theReally/uni_modules/uview-ui/components/u-cell/props.js ***!
-  \*******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default2 = {
-  props: {
-    // 标题
-    title: {
-      type: [String, Number],
-      default: uni.$u.props.cell.title },
-
-    // 标题下方的描述信息
-    label: {
-      type: [String, Number],
-      default: uni.$u.props.cell.label },
-
-    // 右侧的内容
-    value: {
-      type: [String, Number],
-      default: uni.$u.props.cell.value },
-
-    // 左侧图标名称，或者图片链接(本地文件建议使用绝对地址)
-    icon: {
-      type: String,
-      default: uni.$u.props.cell.icon },
-
-    // 是否禁用cell
-    disabled: {
-      type: Boolean,
-      default: uni.$u.props.cell.disabled },
-
-    // 是否显示下边框
-    border: {
-      type: Boolean,
-      default: uni.$u.props.cell.border },
-
-    // 内容是否垂直居中(主要是针对右侧的value部分)
-    center: {
-      type: Boolean,
-      default: uni.$u.props.cell.center },
-
-    // 点击后跳转的URL地址
-    url: {
-      type: String,
-      default: uni.$u.props.cell.url },
-
-    // 链接跳转的方式，内部使用的是uView封装的route方法，可能会进行拦截操作
-    linkType: {
-      type: String,
-      default: uni.$u.props.cell.linkType },
-
-    // 是否开启点击反馈(表现为点击时加上灰色背景)
-    clickable: {
-      type: Boolean,
-      default: uni.$u.props.cell.clickable },
-
-    // 是否展示右侧箭头并开启点击反馈
-    isLink: {
-      type: Boolean,
-      default: uni.$u.props.cell.isLink },
-
-    // 是否显示表单状态下的必填星号(此组件可能会内嵌入input组件)
-    required: {
-      type: Boolean,
-      default: uni.$u.props.cell.required },
-
-    // 右侧的图标箭头
-    rightIcon: {
-      type: String,
-      default: uni.$u.props.cell.rightIcon },
-
-    // 右侧箭头的方向，可选值为：left，up，down
-    arrowDirection: {
-      type: String,
-      default: uni.$u.props.cell.arrowDirection },
-
-    // 左侧图标样式
-    iconStyle: {
-      type: [Object, String],
-      default: function _default() {
-        return uni.$u.props.cell.iconStyle;
-      } },
-
-    // 右侧箭头图标的样式
-    rightIconStyle: {
-      type: [Object, String],
-      default: function _default() {
-        return uni.$u.props.cell.rightIconStyle;
-      } },
-
-    // 标题的样式
-    titleStyle: {
-      type: [Object, String],
-      default: function _default() {
-        return uni.$u.props.cell.titleStyle;
-      } },
-
-    // 单位元的大小，可选值为large
-    size: {
-      type: String,
-      default: uni.$u.props.cell.size },
-
-    // 点击cell是否阻止事件传播
-    stop: {
-      type: Boolean,
-      default: uni.$u.props.cell.stop },
-
-    // 标识符，cell被点击时返回
-    name: {
-      type: [Number, String],
-      default: uni.$u.props.cell.name } } };exports.default = _default2;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })

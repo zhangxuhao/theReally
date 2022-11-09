@@ -10,7 +10,7 @@
 /* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ 5);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 4));
-var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 6));
+var _App = _interopRequireDefault(__webpack_require__(/*! ./App.vue */ 6));
 var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ 12));
 var _filters = _interopRequireDefault(__webpack_require__(/*! @/common/filters.js */ 14));
 

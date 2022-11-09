@@ -100,7 +100,10 @@ var components
 try {
   components = {
     uUpload: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-upload/u-upload */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-upload/u-upload")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-upload/u-upload.vue */ 155))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-upload/u-upload */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-upload/u-upload")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-upload/u-upload.vue */ 209))
+    },
+    lClipper: function() {
+      return Promise.all(/*! import() | uni_modules/lime-clipper/components/l-clipper/l-clipper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/lime-clipper/components/l-clipper/l-clipper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/lime-clipper/components/l-clipper/l-clipper.vue */ 155))
     },
     uCollapse: function() {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-collapse/u-collapse */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-collapse/u-collapse")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-collapse/u-collapse.vue */ 165))
@@ -191,52 +194,51 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-var _home = __webpack_require__(/*! @/api/home.js */ 148);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+
+
+
+
+
+
+var _home = __webpack_require__(/*! @/api/home.js */ 148);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function _iterableToArrayLimit(arr, i) {if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 
 
 
 {
   data: function data() {
     return {
+
+      cropShow: false,
       currentNumebr: 0,
       fileList: [],
-
       stuffList: [] };
 
   },
   onLoad: function onLoad() {},
   methods: {
-    // 删除图片
-    deletePic: function deletePic(event) {
-      this.fileList.splice(event.index, 1);
-      this.stuffList = [];
+    cropCancel: function cropCancel() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                _this.cropOver();case 1:case "end":return _context.stop();}}}, _callee);}))();
     },
-    // 新增图片
-    afterRead: function afterRead(event) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var lists, fileListLen, i, result, item;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-                // 当设置 multiple 为 true 时, file 为数组格式，否则为对象格式
-                lists = [].concat(event.file);
-                fileListLen = _this.fileList.length;
-                lists.map(function (item) {
-                  _this.fileList.push(_objectSpread(_objectSpread({},
-                  item), {}, {
-                    status: 'uploading',
-                    message: '上传中' }));
+    cropOver: function cropOver(e) {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var url, result;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+                url = (e === null || e === void 0 ? void 0 : e.url) || _this2.fileList[0].url;
+                console.log("2", url);
+                _this2.fileList = [{
+                  url: url,
+                  status: 'uploading',
+                  message: '上传中' }];
 
-                });
-                i = 0;case 4:if (!(i < lists.length)) {_context.next = 15;break;}_context.next = 7;return (
-                  (0, _home.uploadImage)(lists[i].url));case 7:result = _context.sent;
+                _this2.cropShow = false;_context2.next = 6;return (
+
+                  (0, _home.uploadImage)(url));case 6:result = _context2.sent;
                 // if(!result){return false};
-                console.log("result", result);
-                item = _this.fileList[fileListLen];
-                _this.fileList.splice(fileListLen, 1, Object.assign(item, {
+
+                _this2.fileList = [{
+                  url: result || url,
                   status: 'success',
-                  message: '',
-                  url: result }));
-
-                fileListLen++;case 12:i++;_context.next = 4;break;case 15:
+                  message: '' }];
 
 
-                _this.stuffList = [{
+                _this2.stuffList = [{
                   head: "赏识在于角度的转换",
                   body: "只要我们正确择取一个合适的参照物乃至稍降一格去看待他人，值得赏识的东西便会扑面而来",
                   open: true,
@@ -248,7 +250,53 @@ var _home = __webpack_require__(/*! @/api/home.js */ 148);function _interopRequi
                 {
                   head: "周围一些不起眼的人、事、物，或许都隐藏着不同凡响的智慧",
                   body: "但是据说雕刻大卫像所用的这块大理石，曾被多位雕刻家批评得一无是处，有些人认为这块大理石采凿得不好，有些人嫌它的纹路不够美",
-                  open: false }];case 16:case "end":return _context.stop();}}}, _callee);}))();
+                  open: false }];case 9:case "end":return _context2.stop();}}}, _callee2);}))();
+
+
+
+    },
+    crop: function crop() {
+      // 通过组件定义的ref调用cropper方法，返回一个promise对象
+      this.$refs.cropper.crop().then(function (e) {var _e2 = _slicedToArray(
+        e, 2),err = _e2[0],res = _e2[1];
+        console.log(e);
+        if (!err) {
+          console.log(res);
+        } else {
+          console.error(err);
+        }
+      });
+    },
+
+
+    // 删除图片
+    deletePic: function deletePic(event) {
+      this.fileList.splice(event.index, 1);
+      this.stuffList = [];
+    },
+    // 新增图片
+    afterRead: function afterRead(event) {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var lists, fileListLen, i, url, item;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+                // 当设置 multiple 为 true 时, file 为数组格式，否则为对象格式
+                console.log("event.file", event.file);
+                lists = [].concat(event.file);
+                fileListLen = _this3.fileList.length;
+
+                lists.map(function (item) {
+                  _this3.fileList.push(_objectSpread({},
+                  item));
+
+                });
+                for (i = 0; i < lists.length; i++) {
+                  url = lists[i].url;
+                  item = _this3.fileList[fileListLen];
+                  _this3.fileList.splice(fileListLen, 1, Object.assign(item, {
+                    url: url }));
+
+                  fileListLen++;
+                }
+
+
+                _this3.cropShow = true;case 6:case "end":return _context3.stop();}}}, _callee3);}))();
 
     } } };exports.default = _default;
 
