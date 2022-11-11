@@ -1,7 +1,9 @@
 
 .u-upload__wrap__preview__image {
-	width: 690rpx !important;
-	height: 400rpx !important;
+	width: 500rpx !important;
+	height:500rpx !important;
+	display: block;
+	margin: auto;
 }
 .u-upload__deletable {
 	height: 60rpx !important;

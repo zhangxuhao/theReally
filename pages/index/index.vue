@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<u-upload :fileList="fileList" @afterRead="afterRead" @delete="deletePic" name="imageFile" multiple
-			:maxCount="1">
+			:maxCount="1" v-model="aspectFit">
 			<view class="upload">
 				<image src="../../static/upload.png"></image>
 				<text>请上传配料图</text>
@@ -13,8 +13,9 @@
 
 		<!-- <bt-cropper ref="cropper" :imageSrc="imageSrc"></bt-cropper>
 		<button @click="crop">裁切</button> -->
-		
-		<l-clipper v-if="cropShow" :is-lock-ratio="false" :image-url="fileList[0].url" @success="cropOver" @cancel="cropCancel" />
+
+		<l-clipper v-if="cropShow" :is-lock-ratio="false" :image-url="fileList[0].url" @success="cropOver"
+			@cancel="cropCancel" />
 
 		<view v-if="stuffList.length>0">
 			<view class="line">
@@ -39,7 +40,7 @@
 	export default {
 		data() {
 			return {
-				
+
 				cropShow: false,
 				currentNumebr: 0,
 				fileList: [],
@@ -48,28 +49,28 @@
 		},
 		onLoad() {},
 		methods: {
-			async cropCancel(){
+			async cropCancel() {
 				this.cropOver();
 			},
-			async cropOver(e){
-				const url=e?.url||this.fileList[0].url;
-				console.log("2",url);
-				this.fileList=[{
+			async cropOver(e) {
+				const url = e?.url || this.fileList[0].url;
+				console.log("2", url);
+				this.fileList = [{
 					url,
 					status: 'uploading',
 					message: '上传中'
 				}];
 				this.cropShow = false;
-				
+
 				const result = await uploadImage(url);
 				// if(!result){return false};
-					
-				this.fileList=[{
-					url:result||url,
+
+				this.fileList = [{
+					url: result || url,
 					status: 'success',
 					message: ''
 				}];
-				
+
 				this.stuffList = [{
 					head: "赏识在于角度的转换",
 					body: "只要我们正确择取一个合适的参照物乃至稍降一格去看待他人，值得赏识的东西便会扑面而来",
@@ -84,8 +85,8 @@
 					body: "但是据说雕刻大卫像所用的这块大理石，曾被多位雕刻家批评得一无是处，有些人认为这块大理石采凿得不好，有些人嫌它的纹路不够美",
 					open: false,
 				}]
-				
-				
+
+
 			},
 			crop() {
 				// 通过组件定义的ref调用cropper方法，返回一个promise对象
@@ -109,27 +110,27 @@
 			// 新增图片
 			async afterRead(event) {
 				// 当设置 multiple 为 true 时, file 为数组格式，否则为对象格式
-				console.log("event.file",event.file)
+				console.log("event.file", event.file)
 				let lists = [].concat(event.file)
 				let fileListLen = this.fileList.length;
-				
+
 				lists.map((item) => {
 					this.fileList.push({
 						...item,
 					})
 				})
 				for (let i = 0; i < lists.length; i++) {
-					const url=lists[i].url;
+					const url = lists[i].url;
 					let item = this.fileList[fileListLen]
 					this.fileList.splice(fileListLen, 1, Object.assign(item, {
 						url: url
 					}))
 					fileListLen++;
 				}
-				
-				
-				this.cropShow=true;
-				
+
+
+				this.cropShow = true;
+
 			},
 		}
 	}
@@ -137,8 +138,10 @@
 
 <style>
 	.u-upload__wrap__preview__image {
-		width: 690rpx !important;
-		height: 400rpx !important;
+		width: 500rpx !important;
+		height:500rpx !important;
+		display: block;
+		margin: auto;
 	}
 
 	.u-upload__deletable {
